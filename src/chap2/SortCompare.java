@@ -35,6 +35,20 @@ public class SortCompare {
                     InsertionXSort.show(a);
                 }
                 break;
+            case "topDownMergeSort" :
+                TopDownMergeSort.sort(a);
+                if (!TopDownMergeSort.isSorted(a)) {
+                    System.out.println("topDownMergeSort");
+                    TopDownMergeSort.show(a);
+                }
+                break;
+            case "downTopMergeSort" :
+                DownTopMergeSort.sort(a);
+                if (!DownTopMergeSort.isSorted(a)) {
+                    System.out.println("downTopMergeSort");
+                    DownTopMergeSort.show(a);
+                }
+                break;
             default :
                 throw new RuntimeException("Please enter the correct alg");
         }
@@ -45,7 +59,7 @@ public class SortCompare {
         double total = 0.0;
         Double[] a = new Double[N];
         for (int t = 0; t < T; t++) {
-
+            for (int i = 0; i < N; i++) a[i] = StdRandom.uniform();
             total += time(alg, a);
 
         }
@@ -53,19 +67,27 @@ public class SortCompare {
     }
 
     public static void main(String[] args) {
-        int N = 10000;
-        int T = 100;
-        double selection = timeRandomInput("selection", N, T);
-        double insertion = timeRandomInput("insertion", N, T);
+        int N = 1000000;
+        int T = 1;
+//        double selection
+////
+////        System.out.println("insertion / selection :" + (selection / insertion));
+////        System.out.println("shell / insertion :" + (insertion / shell)); = timeRandomInput("selection", N, T);
+//        double insertion = timeRandomInput("insertion", N, T);
         double shell = timeRandomInput("shell", N, T);
-        double insertionX = timeRandomInput("insertionX", N, T);
+//        double insertionX = timeRandomInput("insertionX", N, T);
+        double topDownMerge = timeRandomInput("topDownMergeSort", N, T);
+        double downTopMergeSort = timeRandomInput("downTopMergeSort", N, T);
 
-        System.out.println("selection cost: " + selection);
-        System.out.println("insertion cost: " + insertion);
+//        System.out.println("selection cost: " + selection);
+//        System.out.println("insertion cost: " + insertion);
         System.out.println("shell cost: " + shell);
-        System.out.println("insertionX cost: " + insertionX);
+        System.out.println("topDownMe" +
+                "                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     rge cost: " + topDownMerge);
+        System.out.println("downTopMergeSort cost: " + downTopMergeSort);
+//        System.out.println("insertionX cost: " + insertionX);
 
-        System.out.println("insertion / selection :" + (selection / insertion));
-        System.out.println("shell / insertion :" + (insertion / shell));
+        System.out.println("topDownMerge / shell :" + (shell / topDownMerge));
+        System.out.println("downTopMergeSort / shell :" + (shell / downTopMergeSort));
     }
 }
